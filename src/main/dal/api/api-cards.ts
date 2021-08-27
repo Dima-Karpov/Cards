@@ -38,8 +38,16 @@ export const authAPI = {
     me(){
         return instance.post<ProfileResponseType>(`auth/me`, {})
     },
-    registerUser(email: string, password: string){
-        return instance.post<SignUpResponseType>(`auth/register`, {email, password})
+    registerUser(data: RegistrationDataType){
+        return instance.post<SignUpResponseType>(`auth/register`, data)
     },
+    passwordRecovery(email: string, from: string, message: {}){
+        return instance.post(`auth/forgot`, {email, from, message})
+    },
+    newPassword(password: string, resetPasswordToken: {}) {
+        return instance.post(`auth/set-new-password`, {
+            password, resetPasswordToken
+        })
+    }
     
 }

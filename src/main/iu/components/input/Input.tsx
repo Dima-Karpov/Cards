@@ -18,7 +18,7 @@ export const Input: React.FC<InputPropsType> = React.memo((props) => {
         onKeyPress, onEnter,
         error,
         className,
-        type,
+        // type,
         ...restProps
     } = props
 
@@ -40,7 +40,7 @@ export const Input: React.FC<InputPropsType> = React.memo((props) => {
     return (
         <>
             <input
-                type={type}
+                // type={type}
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
                 className={s.input}

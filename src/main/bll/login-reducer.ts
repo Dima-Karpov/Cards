@@ -24,27 +24,30 @@ const initialState = {
     isLoggedIn: false,
 }
 
-export const liginReduce = (state: InitialStateType = initialState, action: LoginActionType): any => {
+export const liginReduce = (state: InitialStateType = initialState, action: LoginActionType): InitialStateType => {
     switch (action.type) {
         case "SET-IS-LOGIN-IN": {
             return {
-                ... state,
+                ...state,
                 profile: action.profile,
-                isLogeedIn: action.isLoggenIn
+                isLoggedIn: action.isLoggedIn
             }
         }
+        default: 
+            return state
     }
 };
 
 
-export const loginAC = (profile: ProfileResponseType, isLoggenIn: boolean) => ({type: 'SET-IS-LOGIN-IN', profile, isLoggenIn} as const);
+export const loginAC = (profile: ProfileResponseType, isLoggedIn: boolean) => ({type: 'SET-IS-LOGIN-IN', profile, isLoggedIn} as const);
 
-export const loginAT = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) => {
+export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) => {
     loginApi.login(email, password, rememberMe)
         .then(res => {
             dispatch(loginAC(res.data, true))
         })
-        .catch(error => {
-            alert(error.message)
+        .catch(e => {
+            const error = e.response ? e.response.data.error : (`Login failed: ${e.message}.`)
+            alert(error)
         })
 }

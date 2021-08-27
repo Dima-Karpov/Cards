@@ -1,0 +1,43 @@
+.modalWindow{
+    height: 450px;
+    width: 350px;
+    border-radius: 2%;
+    background-color: #ffffff;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.phrase{
+   
+    margin-bottom: 10px;
+    height: 30px;
+    color: #eba300;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 33px;
+}
+
+.cehckbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    margin-right: 5px;
+    font-family: sans-serif;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navlink{
+    text-align: center;
+    margin-top:20px;  
+}

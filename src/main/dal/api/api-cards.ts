@@ -14,7 +14,16 @@ export type ProfileResponseType = {
     name: string
     publicCardPacksCount: number
     rememberMe: boolean
-}
+};
+
+export type RegistrationDataType ={
+    email: string
+    password: string
+};
+export type SignUpResponseType = {
+    addedUser: ProfileResponseType //{}
+    error?: string
+};
 
 
 const instance = axios.create({
@@ -22,13 +31,15 @@ const instance = axios.create({
     withCredentials: true,
 })
 
-debugger
 export const authAPI = {
     login(email: string, password: string, rememberMe: boolean){
         return instance.post<ProfileResponseType>(`auth/login`, {email, password, rememberMe})
     },
     me(){
         return instance.post<ProfileResponseType>(`auth/me`, {})
+    },
+    registerUser(email: string, password: string){
+        return instance.post<SignUpResponseType>(`auth/register`, {email, password})
     },
     
 }

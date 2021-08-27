@@ -48,9 +48,9 @@ export const Login = React.memo(() => {
 
     })
 
-        if(isLoggedIn){
-            // return
-        }
+    if (isLoggedIn) {
+        // return
+    }
 
 
     return (
@@ -60,15 +60,17 @@ export const Login = React.memo(() => {
             <form className={s.input} onSubmit={formik.handleSubmit}>
                 <Input
                     className={sInput.input}
+                    placeholder={'email'}
                     {...formik.getFieldProps('email')}
                 />
-                 {formik.touched.email && formik.errors.email ? <div style={{color: 'red'}}>{formik.errors.email}</div> : null}
+                {formik.touched.email && formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
                 <Input
                     className={sInput.input}
                     type='password'
+                    placeholder={'password'}
                     {...formik.getFieldProps('password')}
                 />
-                 {formik.touched.password && formik.errors.password ? <div style={{color: 'red'}}>{formik.errors.password}</div> : null}
+                {formik.touched.password && formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
                 <div className={s.cehckbox}>
                     <label htmlFor='rememberMe'>Remember me</label>
                     <Checkbox

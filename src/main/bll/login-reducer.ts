@@ -1,4 +1,4 @@
-import { loginApi, ProfileResponseType } from "../dal/api/api-cards";
+import { authAPI, ProfileResponseType } from "../dal/api/api-cards";
 import { AppThunk } from "./store";
 
 type InitialStateType = typeof initialState;
@@ -42,7 +42,7 @@ export const liginReduce = (state: InitialStateType = initialState, action: Logi
 export const loginAC = (profile: ProfileResponseType, isLoggedIn: boolean) => ({type: 'SET-IS-LOGIN-IN', profile, isLoggedIn} as const);
 
 export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) => {
-    loginApi.login(email, password, rememberMe)
+    authAPI.login(email, password, rememberMe)
         .then(res => {
             dispatch(loginAC(res.data, true))
         })

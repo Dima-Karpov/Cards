@@ -23,9 +23,12 @@ const instance = axios.create({
 })
 
 debugger
-export const loginApi = {
-  
+export const authAPI = {
     login(email: string, password: string, rememberMe: boolean){
         return instance.post<ProfileResponseType>(`auth/login`, {email, password, rememberMe})
-    }
+    },
+    me(){
+        return instance.post<ProfileResponseType>(`auth/me`, {})
+    },
+    
 }
